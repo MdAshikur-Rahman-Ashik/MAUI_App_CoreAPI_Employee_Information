@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Client.EmployeeCreatePage"
+             Title="EmployeeCreatePage">
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="20">
+            <!-- Employee Id -->
+            <Label Text="Employee Id" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+            <Border Stroke="Gray" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10">
+                <Entry x:Name="EmployeeId" Text="{Binding EmployeeId, Mode=TwoWay}" Placeholder="Enter Employee Id" />
+            </Border>
+
+            <!-- Employee Name -->
+            <Label Text="Employee Name" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+            <Border Stroke="Gray" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10">
+                <Entry x:Name="EmployeeName" Text="{Binding EmployeeName, Mode=TwoWay}" Placeholder="Enter Employee Name" />
+            </Border>
+
+            <!-- Join Date -->
+            <Label Text="Join Date" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+            <Border Stroke="Gray" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10">
+                <DatePicker x:Name="JoinDate" Date="{Binding JoinDate, Mode=TwoWay}" />
+            </Border>
+
+            <!-- Salary -->
+            <Label Text="Salary" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+            <Border Stroke="Gray" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10">
+                <Entry x:Name="Salary" Text="{Binding Salary, Mode=TwoWay}" Placeholder="Enter Salary" Keyboard="Numeric"/>
+            </Border>
+
+            <!-- Active Status -->
+            <Label Text="Active?" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+            <Border Stroke="Gray" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10">
+                <Switch x:Name="IsActive" IsToggled="{Binding IsActive, Mode=TwoWay}" HorizontalOptions="Start"/>
+            </Border>
+
+            <!-- Image Upload -->
+            <Label Text="Image" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+            <Border Stroke="Gray" StrokeThickness="1" BackgroundColor="White" StrokeShape="RoundRectangle 10" Padding="10">
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Image Source="{Binding ImageUrl, Converter={StaticResource Base64ToImageConverter}}" HeightRequest="100" x:Name="Upload_Image" HorizontalOptions="Center" />
+                    <Button x:Name="btnUpload" Text="Upload Image" HorizontalOptions="Center" Clicked="btnUpload_Clicked" />
+                </StackLayout>
+            </Border>
+
+            <!-- Action Buttons -->
+            <Border Padding="0" Stroke="Transparent">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Text="Add Employee" Clicked="btnAddEmployee_Clicked" x:Name="btnAddEmployee" BackgroundColor="#4CAF50" TextColor="White" />
+                    <Button Grid.Column="1" Text="Update" Clicked="btnUpdateEmployee_Clicked" x:Name="btnUpdateEmployee" BackgroundColor="#2196F3" TextColor="White"/>
+                </Grid>
+            </Border>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
